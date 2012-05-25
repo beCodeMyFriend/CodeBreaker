@@ -10,6 +10,6 @@ CUORE.Dom.ready(function() {
     
     CUORE.Bus.enableDebug();
     
-    document.page = new CUORE.Page("http://www.anydomain.com");
+    document.page = new CB.Pages.Main("http://www.anydomain.com");
     document.page.draw();
 });

@@ -5,7 +5,6 @@ describe("CB.generate", function() {
     });
 
     it("returns an array of 4 distinc colors", function() {
-        console.log(CB.generate());
         var code = CB.generate();
         code.should.have.length(4);
 
