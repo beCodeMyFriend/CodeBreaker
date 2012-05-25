@@ -10,7 +10,7 @@ CB.Renderers = CB.Renderers || {};
 CB.Decorations = CB.Decorations || {};
 
 CB.generate = function() {
-    return ["red","cyan","orange","violet"];
+    return ["red", "cyan", "orange", "violet"];
 };
 
-CB.Colors = ["red","cyan","orange","violet","green","yellow"];
+CB.Colors = ["red", "cyan", "orange", "violet", "green", "yellow"];

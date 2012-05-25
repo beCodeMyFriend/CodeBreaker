@@ -12,7 +12,7 @@ describe("CB.Services.Code", function() {
     describe("CB.Services.Code", function() {
 
         beforeEach(function() {
-            CUORE.Bus.emit=sinon.spy();       
+            CUORE.Bus.emit = sinon.spy();
         });
 
         it("has a syncronous method for generating color keys", function() {
