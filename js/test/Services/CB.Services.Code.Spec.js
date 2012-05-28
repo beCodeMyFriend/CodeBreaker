@@ -26,5 +26,12 @@ describe("CB.Services.Code", function() {
             CB.generate.should.have.been.called;
             CUORE.Bus.emit.lastCall.args[1].getFromAnswer("colorCode").should.be("generatedCode");
         });
+
+        it("stores last key generated", function() {
+            CB.generate = sinon.stub().returns("generatedCode");
+            aService.generate();
+            aService.lastCode().should.be("generatedCode")
+        });
+
     });
 });

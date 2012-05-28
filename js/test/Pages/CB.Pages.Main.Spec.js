@@ -37,4 +37,23 @@ describe("CB.Pages.Main", function() {
 
     });
 
+    describe("at instanciation", function() {
+
+        beforeEach(function() {
+            sinon.spy(aPage, "addComponent");
+            aPage.initializeComponents();
+
+        });
+
+        it("has FeedBack", function() {
+            var theArguments = aPage.addComponent.args[0];
+
+            aPage.addComponent.should.have.been.called;
+            theArguments[0].should.be.an.instanceOf(CB.Components.Feedback);
+            theArguments[1].should.equal("feedback");
+            theArguments[2].should.be(CUORE.Behaviours.HIJACK);
+        });
+    });
+    
+    
 });

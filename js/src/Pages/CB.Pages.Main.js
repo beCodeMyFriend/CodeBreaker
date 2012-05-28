@@ -5,7 +5,7 @@ CB.Pages.Main = CUORE.Class(CUORE.Page, {
     },
 
     initializeComponents: function() {
-
+		this.addComponent(new CB.Components.Feedback(),'feedback',CUORE.Behaviours.HIJACK);
     },
 
     setUp: function() {
