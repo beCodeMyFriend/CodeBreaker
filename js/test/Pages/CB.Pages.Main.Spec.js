@@ -40,6 +40,7 @@ describe("CB.Pages.Main", function() {
     describe("at instanciation", function() {
 
         beforeEach(function() {
+            CB.generate = sinon.stub().returns(["alfa", "beta", "gamma", "delta"])
             sinon.spy(aPage, "addComponent");
             aPage.initializeComponents();
 
@@ -89,6 +90,17 @@ describe("CB.Pages.Main", function() {
             theArguments[1].should.equal("fourth");
             theArguments[2].should.be(CUORE.Behaviours.HIJACK);
         });
+
+        it("starts with a random code", function() {
+            var theArguments = aPage.addComponent.args[4];
+
+            CB.generate.should.have.been.called;
+            aPage.addComponent.args[1][0].color().should.be.equal("alfa");
+            aPage.addComponent.args[2][0].color().should.be.equal("beta");
+            aPage.addComponent.args[3][0].color().should.be.equal("gamma");
+            aPage.addComponent.args[4][0].color().should.be.equal("delta");
+        });
+
     });
 
 
