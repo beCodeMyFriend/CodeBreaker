@@ -1,10 +1,10 @@
-describe("CB.generate", function() {
+describe("CB", function() {
 
-    it("is a function", function() {
+    it("has a  function to generate", function() {
         CB.generate.should.be.an("funtion");
     });
 
-    it("returns an array of 4 distinc colors", function() {
+    it("generates an array of 4 distinc colors", function() {
         var code = CB.generate();
         code.should.have.length(4);
 
@@ -24,11 +24,16 @@ describe("CB.generate", function() {
 
     });
 
-    it("returns a new code every call", function() {
+    it("generates a new code every call", function() {
         var code = CB.generate();
         code.should.have.length(4);
         expect(CB.generate()).not.toEqual(code);
     });
 
+    it("returns the next color in CB.Color", function() {
+        CB.nextColor(CB.Colors[0]).should.be.equal(CB.Colors[1]);
+        CB.nextColor(CB.Colors[4]).should.be.equal(CB.Colors[5]);
+        CB.nextColor(CB.Colors[5]).should.be.equal(CB.Colors[0]);
+    });
 
 });

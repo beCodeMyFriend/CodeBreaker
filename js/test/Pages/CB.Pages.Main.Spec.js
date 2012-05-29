@@ -53,7 +53,43 @@ describe("CB.Pages.Main", function() {
             theArguments[1].should.equal("feedback");
             theArguments[2].should.be(CUORE.Behaviours.HIJACK);
         });
+
+        it("has first color", function() {
+            var theArguments = aPage.addComponent.args[1];
+
+            aPage.addComponent.should.have.been.called;
+            theArguments[0].should.be.an.instanceOf(CB.Components.Color);
+            theArguments[1].should.equal("first");
+            theArguments[2].should.be(CUORE.Behaviours.HIJACK);
+        });
+
+        it("has second color", function() {
+            var theArguments = aPage.addComponent.args[2];
+
+            aPage.addComponent.should.have.been.called;
+            theArguments[0].should.be.an.instanceOf(CB.Components.Color);
+            theArguments[1].should.equal("second");
+            theArguments[2].should.be(CUORE.Behaviours.HIJACK);
+        });
+
+        it("has third color", function() {
+            var theArguments = aPage.addComponent.args[3];
+
+            aPage.addComponent.should.have.been.called;
+            theArguments[0].should.be.an.instanceOf(CB.Components.Color);
+            theArguments[1].should.equal("third");
+            theArguments[2].should.be(CUORE.Behaviours.HIJACK);
+        });
+
+        it("has fourth color", function() {
+            var theArguments = aPage.addComponent.args[4];
+
+            aPage.addComponent.should.have.been.called;
+            theArguments[0].should.be.an.instanceOf(CB.Components.Color);
+            theArguments[1].should.equal("fourth");
+            theArguments[2].should.be(CUORE.Behaviours.HIJACK);
+        });
     });
-    
-    
+
+
 });

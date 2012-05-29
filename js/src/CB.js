@@ -20,6 +20,12 @@ CB.generate = function(code) {
     return aCode;
 };
 
+CB.nextColor = function(color) {
+    var currentIndex=CB.Colors.indexOf(color);
+    if (currentIndex == CB.Colors.length-1) currentIndex=-1;
+    return CB.Colors[currentIndex+1];
+};
+
 CB.Colors = ["red", "cyan", "orange", "violet", "green", "yellow"];
 
 CB._randomColor = function() {
