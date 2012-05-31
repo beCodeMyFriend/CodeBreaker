@@ -11,6 +11,7 @@ CB.Pages.Main = CUORE.Class(CUORE.Page, {
         this.addComponent(new CB.Components.Color("second", colors[1]), 'second', CUORE.Behaviours.HIJACK);
         this.addComponent(new CB.Components.Color("third", colors[2]), 'third', CUORE.Behaviours.HIJACK);
         this.addComponent(new CB.Components.Color("fourth", colors[3]), 'fourth', CUORE.Behaviours.HIJACK);
+		this.addComponent(new CB.Components.TryButton("tryit","codebreaker.try"), 'tryit', CUORE.Behaviours.HIJACK);
     },
 
     setUp: function() {

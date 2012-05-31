@@ -91,6 +91,15 @@ describe("CB.Pages.Main", function() {
             theArguments[2].should.be(CUORE.Behaviours.HIJACK);
         });
 
+        it("has TryIt Button", function() {
+            var theArguments = aPage.addComponent.args[5];
+
+            aPage.addComponent.should.have.been.called;
+            theArguments[0].should.be.an.instanceOf(CB.Components.TryButton);
+            theArguments[1].should.equal("tryit");
+            theArguments[2].should.be(CUORE.Behaviours.HIJACK);
+        });
+        
         it("starts with a random code", function() {
             var theArguments = aPage.addComponent.args[4];
 

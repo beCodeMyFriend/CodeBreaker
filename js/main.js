@@ -4,7 +4,7 @@ CUORE.Dom.ready(function() {
     document.labels = {};
     document.labels[currentLocale] = {
         
-       // "a.key": "Text ",
+       "codebreaker.try": "Try It! ",
         
     };
     
