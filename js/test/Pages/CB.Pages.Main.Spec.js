@@ -39,8 +39,10 @@ describe("CB.Pages.Main", function() {
 
     describe("at instanciation", function() {
 
+        var aCode = ["alfa", "beta", "gamma", "delta"];
+
         beforeEach(function() {
-            CB.generate = sinon.stub().returns(["alfa", "beta", "gamma", "delta"])
+            CB.generate = sinon.stub().returns(aCode)
             sinon.spy(aPage, "addComponent");
             aPage.initializeComponents();
 
@@ -98,8 +100,10 @@ describe("CB.Pages.Main", function() {
             theArguments[0].should.be.an.instanceOf(CB.Components.TryButton);
             theArguments[1].should.equal("tryit");
             theArguments[2].should.be(CUORE.Behaviours.HIJACK);
+            theArguments[0].guestCode().should.be.equal(aCode);
+
         });
-        
+
         it("starts with a random code", function() {
             var theArguments = aPage.addComponent.args[4];
 
