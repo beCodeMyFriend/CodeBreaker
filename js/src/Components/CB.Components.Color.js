@@ -15,9 +15,13 @@ CB.Components.Color = CUORE.Class(CUORE.Component, {
     color: function() {
         return this.myColor;
     },
-    
+
     rotateColor: function() {
         this.myColor = CB.nextColor(this.myColor);
         this.updateRender();
+        params = {};
+        params.position = this.myPosition;
+        params.color = this.myColor;
+        CUORE.Bus.emit("CODE_rotate_MADE", params);
     },
 });
