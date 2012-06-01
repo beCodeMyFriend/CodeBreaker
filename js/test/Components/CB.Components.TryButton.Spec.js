@@ -41,4 +41,18 @@ describe("CB.Components.TryButton", function() {
         aComponent.updateCode({"position":"fourth","color":"violet"});
         aComponent.guestCode().should.be.eql(["blue","red","orange","violet"]);
     });
+    
+    it("handles its own click in color", function() {
+        aComponent.checkCode=sinon.spy();
+        aComponent.eventDispatch('BUTTON_tryit_CLICKED',undefined);
+        aComponent.getManagedEvents().should.include('BUTTON_tryit_CLICKED');
+        aComponent.checkCode.should.have.been.called;
+    });
+    
+    it('checks code when clicked', function() {
+        aComponent.execute=sinon.spy();
+        aComponent.setGuestCode("aCode");
+        aComponent.checkCode();
+        aComponent.execute.should.have.been.calledWith('CODE', 'check', 'aCode');
+    });
 });

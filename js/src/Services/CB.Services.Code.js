@@ -17,4 +17,10 @@ CB.Services.Code = CUORE.Class(CUORE.Service, {
     lastCode: function() {
         return this.code;
     },
+    
+    check: function(code) {
+        theMessage = new CUORE.Message();
+        theMessage.putOnAnswer("code", code);
+        this.emit("CODE_check_EXECUTED", theMessage.asJson());
+    },
 });

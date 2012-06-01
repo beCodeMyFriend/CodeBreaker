@@ -5,6 +5,7 @@ CB.Components.TryButton = CUORE.Class(CUORE.Components.Button, {
         this.renderer = new CB.Renderers.TryButton();
         this.myGuestCode = undefined;
         this.addExecHandler("CODE_rotate_MADE",'updateCode');
+        this.addExecHandler("BUTTON_tryit_CLICKED",'checkCode');
     },
 
     setGuestCode: function(code) {
@@ -21,5 +22,9 @@ CB.Components.TryButton = CUORE.Class(CUORE.Components.Button, {
         return; 
     },
 
+    checkCode: function() {
+        var params=this.myGuestCode;
+        this.execute("CODE",'check',params); 
+    },
 
 });
