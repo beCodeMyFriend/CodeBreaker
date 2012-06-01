@@ -18,4 +18,27 @@ describe("CB.Components.TryButton", function() {
         aComponent.setGuestCode("aCode");
         aComponent.guestCode().should.be.equal("aCode");
     });
+    
+    it("handles changes in color", function() {
+        aComponent.updateCode=sinon.spy();
+        aComponent.eventDispatch('CODE_rotate_MADE',undefined);
+        aComponent.getManagedEvents().should.include('CODE_rotate_MADE');
+        aComponent.updateCode.should.have.been.called;
+    });
+    
+    it("Updates guest code when color changes", function() {
+        aComponent.setGuestCode(["alfa","beta","gamma","teta"]);
+        
+        aComponent.updateCode({"position":"first","color":"blue"});
+        aComponent.guestCode().should.be.eql(["blue","beta","gamma","teta"]);
+        
+        aComponent.updateCode({"position":"second","color":"red"});
+        aComponent.guestCode().should.be.eql(["blue","red","gamma","teta"]);
+        
+        aComponent.updateCode({"position":"third","color":"orange"});
+        aComponent.guestCode().should.be.eql(["blue","red","orange","teta"]);
+        
+        aComponent.updateCode({"position":"fourth","color":"violet"});
+        aComponent.guestCode().should.be.eql(["blue","red","orange","violet"]);
+    });
 });

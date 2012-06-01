@@ -27,6 +27,7 @@ CB.nextColor = function(color) {
 };
 
 CB.Colors = ["red", "cyan", "orange", "violet", "green", "yellow"];
+CB.Positions = ["first", "second", "third", "fourth"];
 
 CB._randomColor = function() {
     var index = Math.floor(Math.random() * (6));
