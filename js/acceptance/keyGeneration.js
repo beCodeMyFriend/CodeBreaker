@@ -11,7 +11,7 @@ describe("visit", function() {
       .then(done, done);
   });
 
-  it("should load the promises page", function() {
+  it("should load the CodeBreaker page", function() {
     assert.equal(this.browser.text("title"), "CodeBreaker");
   });
   
