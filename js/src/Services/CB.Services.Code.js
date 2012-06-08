@@ -7,10 +7,12 @@ CB.Services.Code = CUORE.Class(CUORE.Service, {
     },
 
     generate: function() {
-        theMessage = new CUORE.Message();
         theCode = CB.generate();
         this.code = theCode;
+        
+        theMessage = new CUORE.Message();
         theMessage.putOnAnswer("colorCode", theCode);
+        
         this.emit("CODE_generate_EXECUTED", theMessage.asJson());
     },
 

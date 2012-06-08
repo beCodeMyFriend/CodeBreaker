@@ -1,6 +1,7 @@
 describe("CB.Services.Code", function() {
 
-    var aService
+    var aService;
+    var generatedCode = "generatedCode";
 
     beforeEach(function() {
         aService = new CB.Services.Code();
@@ -9,7 +10,8 @@ describe("CB.Services.Code", function() {
     it("is a Service", function() {
         aService.should.be.an.instanceOf(CUORE.Service);
     });
-    describe("CB.Services.Code", function() {
+
+    describe("on generation ", function() {
 
         beforeEach(function() {
             CUORE.Bus.emit = sinon.spy();
@@ -21,17 +23,22 @@ describe("CB.Services.Code", function() {
         });
 
         it("delegates generation to a helper", function() {
-            CB.generate = sinon.stub().returns("generatedCode");
-            aService.generate();
-            CB.generate.should.have.been.called;
-            CUORE.Bus.emit.lastCall.args[1].getFromAnswer("colorCode").should.be("generatedCode");
-        });
+            CB.generate = sinon.stub().returns(generatedCode);
 
-        it("stores last key generated", function() {
-            CB.generate = sinon.stub().returns("generatedCode");
             aService.generate();
-            aService.lastCode().should.be("generatedCode")
+            var busCall = CUORE.Bus.emit.lastCall.args[1];
+
+            CB.generate.should.have.been.called;
+            busCall.getFromAnswer("colorCode").should.be(generatedCode);
         });
 
     });
+
+    it("stores last key generated", function() {
+        CB.generate = sinon.stub().returns(generatedCode);
+        aService.generate();
+
+        aService.lastCode().should.be(generatedCode)
+    });
+
 });

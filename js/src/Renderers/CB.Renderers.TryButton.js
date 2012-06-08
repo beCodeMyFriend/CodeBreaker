@@ -1,4 +1,4 @@
-CB.Renderers.TryButton = CUORE.Class(CUORE.Renderers.Button , {
+CB.Renderers.TryButton = CUORE.Class(CUORE.Renderers.Button, {
 
     init: function() {
         CUORE.Renderers.Button.parent.init.call(this);
@@ -6,7 +6,7 @@ CB.Renderers.TryButton = CUORE.Class(CUORE.Renderers.Button , {
         this.DOMClass = 'button';
     },
 
-    
+
 
     _adjustBehaviour: function(component) {
         var notAnAnchor = this.container.tagName !== 'BUTTON';

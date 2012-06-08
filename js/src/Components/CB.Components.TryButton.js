@@ -4,8 +4,7 @@ CB.Components.TryButton = CUORE.Class(CUORE.Components.Button, {
         CB.Components.TryButton.parent.init.call(this, name, key);
         this.renderer = new CB.Renderers.TryButton();
         this.myGuestCode = undefined;
-        this.addExecHandler("CODE_rotate_MADE",'updateCode');
-        this.addExecHandler("BUTTON_tryit_CLICKED",'checkCode');
+        this._addHandlers();
     },
 
     setGuestCode: function(code) {
@@ -17,14 +16,19 @@ CB.Components.TryButton = CUORE.Class(CUORE.Components.Button, {
     },
 
     updateCode: function(params) {
-        var position =CB.Positions.indexOf(params.position);
-        this.myGuestCode[position]=params.color;
-        return; 
+        var position = CB.Positions.indexOf(params.position);
+        this.myGuestCode[position] = params.color;
+        return;
     },
 
     checkCode: function() {
-        var params=this.myGuestCode;
-        this.execute("CODE",'check',params); 
+        var params = this.myGuestCode;
+        this.execute("CODE", 'check', params);
     },
 
+    _addHandlers: function() {
+
+        this.addExecHandler("CODE_rotate_MADE", 'updateCode');
+        this.addExecHandler("BUTTON_tryit_CLICKED", 'checkCode');
+    },
 });

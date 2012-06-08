@@ -13,8 +13,7 @@ describe("CB.Renderers.Color", function() {
     });
 
     afterEach(function() {
-        container = document.getElementById('xhtmlToTest');
-        container.innerHTML = '';
+        clearTestContainer();
     });
 
     it("is a Renderer", function() {
@@ -28,7 +27,7 @@ describe("CB.Renderers.Color", function() {
 
     it("put position as id an color as class", function() {
         theRenderer.render(aComponent);
-        
+
         $('#testingContainer td').should.have.class('aColor');
         $('#testingContainer td').should.have.id('aPosition');
     });
@@ -45,10 +44,10 @@ describe("CB.Renderers.Color", function() {
 
     it("updates the color class", function() {
         theRenderer.render(aComponent);
-        
+
         $('#testingContainer td').should.have.class('aColor');
         aComponent.color = sinon.stub().returns("anotherColor");
-        
+
         theRenderer.render(aComponent);
         $('#testingContainer td').should.not.have.class('aColor');
         $('#testingContainer td').should.have.class('anotherColor');
@@ -70,6 +69,14 @@ describe("CB.Renderers.Color", function() {
         };
 
     var getDummyComponent = function() {
+            var aComponent = buildStandarDummy();
+            aComponent.selected = sinon.stub().returns(false);
+            aComponent.position = sinon.stub().returns("aPosition");
+            aComponent.color = sinon.stub().returns("aColor");
+            return aComponent;
+        };
+
+    var buildStandarDummy = function() {
             var aComponent = {};
 
             aComponent.isEnabled = sinon.stub().returns(true);
@@ -78,11 +85,12 @@ describe("CB.Renderers.Color", function() {
             aComponent.doYouReplace = sinon.stub().returns(true);
             aComponent.doYouHijack = sinon.stub().returns(false);
             aComponent.getContainer = sinon.stub().returns("testingContainer");
-            aComponent.selected = sinon.stub().returns(false);
-            aComponent.position = sinon.stub().returns("aPosition");
-            aComponent.color = sinon.stub().returns("aColor");
+
             return aComponent;
         };
 
-
+    var clearTestContainer = function() {
+            container = document.getElementById('xhtmlToTest');
+            container.innerHTML = '';
+        };
 });
