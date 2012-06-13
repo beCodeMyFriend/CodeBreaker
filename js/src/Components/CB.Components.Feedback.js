@@ -7,13 +7,13 @@ CB.Components.Feedback = CUORE.Class(CUORE.Components.List, {
         this.addExecHandler("CODE_check_EXECUTED", "showResponse");
     },
 
-    showCodeGenerated: function(Message) {
+    showCodeGenerated: function(message) {
         this.list.push("Code generated");
         this.updateRender();
     },
 
-    showResponse: function(Message) {
-        this.list.push("a validation");
+    showResponse: function(message) {
+        this.list.push(message.getFromAnswer("validationResult"));
         this.updateRender();
     }
 });

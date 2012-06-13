@@ -36,4 +36,22 @@ describe("CB", function() {
         CB.nextColor(CB.Colors[5]).should.be.equal(CB.Colors[0]);
     });
 
+    it("has a  function to check", function() {
+        CB.check.should.be.an("funtion");
+    });
+
+    it("detects colors in place", function() {
+        var code = ["orange", "violet", "blue", "red"];
+        CB.check(["orange", "violet", "blue", "red"], code).should.eql("XXXX");
+        CB.check(["orange", "violet", "", ""], code).should.eql("XX");
+        CB.check(["violet", "violet", "violet", "violet"], code).should.eql("X");
+        CB.check(["", "", "", ""], code).should.eql("");
+    });
+
+    it("detects presence of colors in wrong place", function() {
+        var code = ["orange", "violet", "blue", "red"];
+        CB.check(["blue", "red", "orange", "violet"], code).should.eql("****");
+
+    });
+
 });

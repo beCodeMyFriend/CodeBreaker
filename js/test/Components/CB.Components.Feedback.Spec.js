@@ -18,10 +18,11 @@ describe("CB.Feedback", function() {
 
     it("Handles validation of codes inserting a message in the list", function() {
         var aMessage = new CUORE.Message();
-        aMessage.putOnAnswer("result", "XXX**");
         aComponent.getManagedEvents().should.include('CODE_check_EXECUTED');
+        aMessage.putOnAnswer("validationResult", "XX**");
         aComponent.eventDispatch('CODE_check_EXECUTED', aMessage);
-        aComponent.size().should.be(1);
+        aComponent.size().should.eql(1);
+        aComponent.item(0).should.eql("XX**");
 
     });
 

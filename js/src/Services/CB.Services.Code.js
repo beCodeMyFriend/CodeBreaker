@@ -22,7 +22,8 @@ CB.Services.Code = CUORE.Class(CUORE.Service, {
     
     check: function(code) {
         theMessage = new CUORE.Message();
-        theMessage.putOnAnswer("code", code);
+        theMessage.putOnQuery("code", code);
+        theMessage.putOnAnswer("validationResult", CB.check(code,this.code));
         this.emit("CODE_check_EXECUTED", theMessage.asJson());
     },
 });

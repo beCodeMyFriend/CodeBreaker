@@ -26,10 +26,10 @@ describe("CB.Services.Code", function() {
             CB.generate = sinon.stub().returns(generatedCode);
 
             aService.generate();
-            var busCall = CUORE.Bus.emit.lastCall.args[1];
+            var messageEmitted = CUORE.Bus.emit.lastCall.args[1];
 
             CB.generate.should.have.been.called;
-            busCall.getFromAnswer("colorCode").should.be(generatedCode);
+            messageEmitted.getFromAnswer("colorCode").should.eql(generatedCode);
         });
 
     });
@@ -41,4 +41,29 @@ describe("CB.Services.Code", function() {
         aService.lastCode().should.be(generatedCode)
     });
 
-});
+	describe("on validation ", function() {
+
+        beforeEach(function() {
+            CUORE.Bus.emit = sinon.spy();
+            CB.check = sinon.stub().returns("XX**");
+        });
+
+        it("has a syncronous method for validating color keys", function() {
+            aService.check("colorCode");
+            CUORE.Bus.emit.should.have.been.calledWith("CODE_check_EXECUTED");
+        });
+
+        it("delegates validation to a helper", function() {
+
+			aService.code="anotherCode";
+            aService.check("aColorCode");
+            var messageEmitted = CUORE.Bus.emit.lastCall.args[1];
+			
+            CB.check.should.have.been.calledWith("aColorCode",aService.code);
+            messageEmitted.getFromAnswer("validationResult").should.eql("XX**");
+			messageEmitted.getFromQuery("code").should.eql("aColorCode");
+        });
+
+    });
+	
+});  
