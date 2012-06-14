@@ -7,8 +7,8 @@ CUORE.Dom.ready(function() {
        "codebreaker.try": "Try It! ",
         
     };
-    
     CUORE.Bus.enableDebug();
+    
     
     document.page = new CB.Pages.Main("http://www.anydomain.com");
     document.page.draw();
