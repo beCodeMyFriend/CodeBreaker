@@ -5,11 +5,11 @@ CB.Components.Trys = CUORE.Class(CUORE.Components.List, {
         this.renderer = new CB.Renderers.Trys();
         this.addExecHandler("CODE_check_EXECUTED", "putRound");
     },
-    
+
     putRound: function(message) {
-        var round={};
+        var round = {};
         round.code = message.getFromQuery("code");
-        round.veredict=message.getFromAnswer("validationResult");
+        round.veredict = message.getFromAnswer("validationResult");
         this.list.push(round);
         this.updateRender();
     },

@@ -14,6 +14,9 @@ CB.Pages.Main = CUORE.Class(CUORE.Page, {
         this._addColors(colors);
 
         this.addComponent(tryIt, 'tryit', CUORE.Behaviours.HIJACK);
+
+        var trys = new CB.Components.Trys();
+        this.addComponent(trys, 'trys', CUORE.Behaviours.HIJACK);
     },
 
     setUp: function() {
