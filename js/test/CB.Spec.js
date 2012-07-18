@@ -37,7 +37,7 @@ describe("CB", function() {
     });
 
     it("has a  function to check", function() {
-        CB.check.should.be.an("funtion");
+        CB.check.should.be.an("function");
     });
 
     it("detects colors in place", function() {

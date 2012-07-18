@@ -9,7 +9,10 @@ CUORE.Dom.ready(function() {
     };
     //CUORE.Bus.enableDebug();
     
-    
+    /*
     document.page = new CB.Pages.Main("http://www.anydomain.com");
     document.page.draw();
+    */
+
+    QUORE.page.service('CODE');
 });
