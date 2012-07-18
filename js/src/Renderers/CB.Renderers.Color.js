@@ -27,6 +27,7 @@ CB.Renderers.Color = CUORE.Class(CUORE.Renderer, {
 
     _clickEvent: function(component) {
         var componentRotateColor = CUORE.Core.bind(component, component.rotateColor);
+        CUORE.Dom.Event.remove(this.panel, 'click');
         CUORE.Dom.Event.stopDefault(this.panel, 'click');
         CUORE.Dom.Event.add(this.panel, 'click', componentRotateColor);
     },
