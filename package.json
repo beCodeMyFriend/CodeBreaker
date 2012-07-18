@@ -1,0 +1,10 @@
+{
+	"name":"codebreaker",
+	"author": "becode <becodemyfriend@gmail.com>",
+	"version": "0.0.1",
+	"devDependencies":{
+		"zombie": "*",
+		"should": "*"
+	},
+	"engine": "node >= 0.6.6"
+}
