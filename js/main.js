@@ -14,5 +14,7 @@ CUORE.Dom.ready(function() {
     document.page.draw();
     */
 
-    QUORE.page.service('CODE');
+    QUORE.page().has.service('CODE');
+    QUORE.component(new CB.Components.FeedBack()).hijacks('feedback');
+    QUORE.execute('generate').from.service('CODE');
 });
